@@ -1,0 +1,8 @@
+prefix=/home/h/catkin_ws/devel
+
+Name: object_description
+Description: Description of object_description
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/h/catkin_ws/devel/lib 
+Requires: 

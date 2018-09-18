@@ -1,0 +1,1398 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='cuboid_3'>
+      <link name='cuboid_3'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='cuboid_3_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cuboid_3.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='cuboid_3_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cuboid_3.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.7 -0.1 1 0 -0 0</pose>
+    </model>
+    <model name='centrum_6'>
+      <link name='centrum_6'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='centrum_6_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum_6.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='centrum_6_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum_6.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.7 -0.3 1 0 -0 0</pose>
+    </model>
+    <model name='ball'>
+      <link name='ball'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='ball_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/ball.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='ball_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/ball.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.4 -0.3 1 0 -0 0</pose>
+    </model>
+    <model name='cuboid_4'>
+      <link name='cuboid_4'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='cuboid_4_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cuboid_4.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='cuboid_4_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cuboid_4.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.7 0.1 1 0 -0 0</pose>
+    </model>
+    <model name='square_50'>
+      <link name='square_50'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='square_50_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/square_50.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='square_50_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/square_50.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>1 -0.4 1 0 -0 0</pose>
+    </model>
+    <model name='centrum_4'>
+      <link name='centrum_4'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='centrum_4_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum_4.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='centrum_4_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum_4.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.4 0.1 1 0 -0 0</pose>
+    </model>
+    <model name='square_25'>
+      <link name='square_25'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='square_25_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/square_25.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='square_25_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/square_25.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>1 -0.2 1 0 -0 0</pose>
+    </model>
+    <model name='table'>
+      <link name='table'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0.25 0 -0 0</pose>
+          <mass>10.8</mass>
+          <inertia>
+            <ixx>32.625</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>32.625</iyy>
+            <iyz>0</iyz>
+            <izz>64.8</izz>
+          </inertia>
+        </inertial>
+        <collision name='table_collision'>
+          <pose frame=''>0 0 0.25 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>6 6 0.5</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='table_visual'>
+          <pose frame=''>0 0 0.25 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>6 6 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='cylinder_50'>
+      <link name='cylinder_50'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='cylinder_50_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cylinder_50.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='cylinder_50_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cylinder_50.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.7 0.3 1 0 -0 0</pose>
+    </model>
+    <model name='centrum_5'>
+      <link name='centrum_5'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='centrum_5_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum_5.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='centrum_5_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum_5.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.4 0.3 1 0 -0 0</pose>
+    </model>
+    <model name='kinect2'>
+      <link name='kinect2_link'>
+        <pose frame=''>0 0 1.5 -2.61799 -0 -1.5708</pose>
+        <inertial>
+          <pose frame=''>-0.016133 -0.049625 0.0775 0 -0 0</pose>
+          <mass>0.2</mass>
+          <inertia>
+            <ixx>0.0212022</ixx>
+            <ixy>6.85674e-06</ixy>
+            <ixz>0.000250069</ixz>
+            <iyy>0.0212533</iyy>
+            <iyz>-3.29375e-05</iyz>
+            <izz>0.020053</izz>
+          </inertia>
+        </inertial>
+        <collision name='kinect2_link_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/cheng/catkin_ws/src/kinect2/kinect2_description/meshes/kinect2_origin_on_rgb_optical_frame.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='kinect2_link_fixed_joint_lump__kinect2_ir_link_collision_1'>
+          <pose frame=''>-0.032267 -0.0475 0.155 -3.14158 -1.57079 1.57078</pose>
+          <geometry>
+            <sphere>
+              <radius>0.0005</radius>
+            </sphere>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='kinect2_link_fixed_joint_lump__kinect2_rgb_link_collision_2'>
+          <pose frame=''>0 -0.05175 0 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.0005</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='kinect2_link_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>/home/cheng/catkin_ws/src/kinect2/kinect2_description/meshes/kinect2_origin_on_rgb_optical_frame.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Orange</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='kinect2_link_fixed_joint_lump__kinect2_ir_link_visual_1'>
+          <pose frame=''>-0.032267 -0.0475 0.155 -3.14158 -1.57079 1.57078</pose>
+          <geometry>
+            <sphere>
+              <radius>0.0005</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Red</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='kinect2_link_fixed_joint_lump__kinect2_rgb_link_visual_2'>
+          <pose frame=''>0 -0.05175 0 -1.5708 -0 -1.5708</pose>
+          <geometry>
+            <sphere>
+              <radius>0.0005</radius>
+            </sphere>
+          </geometry>
+        </visual>
+        <velocity_decay/>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <sensor name='kinect2_ir_sensor' type='depth'>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <camera name='__default__'>
+            <horizontal_fov>1.22173</horizontal_fov>
+            <image>
+              <format>B8G8R8</format>
+              <width>960</width>
+              <height>540</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>12</far>
+            </clip>
+          </camera>
+          <plugin name='kinect2_ir_controller' filename='libgazebo_ros_openni_kinect.so'>
+            <baseline>0.2</baseline>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>30</updateRate>
+            <cameraName>kinect2_ir</cameraName>
+            <imageTopicName>/kinect2/qhd/image_color_rect</imageTopicName>
+            <cameraInfoTopicName>/kinect2/qhd/camera_info</cameraInfoTopicName>
+            <depthImageTopicName>/kinect2/qhd/image_depth_rect</depthImageTopicName>
+            <depthImageCameraInfoTopicName>/kinect2/qhd/camera_info</depthImageCameraInfoTopicName>
+            <pointCloudTopicName>/kinect2/qhd/points</pointCloudTopicName>
+            <frameName>kinect2_ir_optical_frame</frameName>
+            <pointCloudCutoff>0.5</pointCloudCutoff>
+            <distortionK1>0</distortionK1>
+            <distortionK2>0</distortionK2>
+            <distortionK3>0</distortionK3>
+            <distortionT1>0</distortionT1>
+            <distortionT2>0</distortionT2>
+            <CxPrime>0</CxPrime>
+            <Cx>0</Cx>
+            <Cy>0</Cy>
+            <focalLength>0</focalLength>
+            <hackBaseline>0</hackBaseline>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose frame=''>-0.032267 -0.0475 0.155 -3.14158 -1.57079 1.57078</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='kinect2_link' type='fixed'>
+        <child>kinect2_link</child>
+        <parent>world</parent>
+        <axis>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+        <physics>
+          <ode>
+            <limit>
+              <cfm>0</cfm>
+              <erp>0.2</erp>
+            </limit>
+          </ode>
+        </physics>
+        <sensor name='kinect2_ir_sensor' type='depth'>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <camera name='__default__'>
+            <horizontal_fov>1.22173</horizontal_fov>
+            <image>
+              <format>B8G8R8</format>
+              <width>960</width>
+              <height>540</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>12</far>
+            </clip>
+          </camera>
+          <plugin name='kinect2_ir_controller' filename='libgazebo_ros_openni_kinect.so'>
+            <baseline>0.2</baseline>
+            <alwaysOn>true</alwaysOn>
+            <updateRate>30</updateRate>
+            <cameraName>kinect2_ir</cameraName>
+            <imageTopicName>/kinect2/qhd/image_color_rect</imageTopicName>
+            <cameraInfoTopicName>/kinect2/qhd/camera_info</cameraInfoTopicName>
+            <depthImageTopicName>/kinect2/qhd/image_depth_rect</depthImageTopicName>
+            <depthImageCameraInfoTopicName>/kinect2/qhd/camera_info</depthImageCameraInfoTopicName>
+            <pointCloudTopicName>/kinect2/qhd/points</pointCloudTopicName>
+            <frameName>kinect2_ir_optical_frame</frameName>
+            <pointCloudCutoff>0.5</pointCloudCutoff>
+            <distortionK1>0</distortionK1>
+            <distortionK2>0</distortionK2>
+            <distortionK3>0</distortionK3>
+            <distortionT1>0</distortionT1>
+            <distortionT2>0</distortionT2>
+            <CxPrime>0</CxPrime>
+            <Cx>0</Cx>
+            <Cy>0</Cy>
+            <focalLength>0</focalLength>
+            <hackBaseline>0</hackBaseline>
+            <robotNamespace>/</robotNamespace>
+          </plugin>
+          <pose frame=''>-0.032267 -0.0475 0.155 -3.14158 -1.57079 1.57078</pose>
+        </sensor>
+      </joint>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='half_ball'>
+      <link name='half_ball'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='half_ball_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/half_ball.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='half_ball_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/half_ball.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>1 0.2 1 0 -0 0</pose>
+    </model>
+    <model name='centrum'>
+      <link name='centrum'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='centrum_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='centrum_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/centrum.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>0.4 -0.1 1 0 -0 0</pose>
+    </model>
+    <model name='cylinder_75'>
+      <link name='cylinder_75'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='cylinder_75_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cylinder_75.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='cylinder_75_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/cylinder_75.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>1 0.4 1 0 -0 0</pose>
+    </model>
+    <model name='prisms_6'>
+      <link name='prisms_6'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='prisms_6_collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/prisms_6.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode>
+                <kp>1e+06</kp>
+                <kd>1</kd>
+              </ode>
+            </contact>
+            <friction>
+              <ode>
+                <mu>50</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='prisms_6_visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/cheng/catkin_ws/src/object/object_description/meshes/prisms_6.stl</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Wood</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <gravity>1</gravity>
+        <velocity_decay/>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>1 0 1 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>2677 511000000</sim_time>
+      <real_time>2745 876200116</real_time>
+      <wall_time>1524706341 259341015</wall_time>
+      <iterations>2677511</iterations>
+      <model name='ball'>
+        <pose frame=''>0.956489 -0.248106 0.524471 0.069188 -0.056644 -0.001646</pose>
+        <scale>1 1 1</scale>
+        <link name='ball'>
+          <pose frame=''>0.956489 -0.248106 0.524471 0.069188 -0.056644 -0.001646</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076896 0.03485 -3.00699 0.008217 -0.003316 -5e-06</acceleration>
+          <wrench>-0.076896 0.03485 -3.00699 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='centrum'>
+        <pose frame=''>0.679837 -0.248021 0.537126 0.002382 0.000678 -0.001144</pose>
+        <scale>1 1 1</scale>
+        <link name='centrum'>
+          <pose frame=''>0.679837 -0.248021 0.537126 0.002382 0.000678 -0.001144</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.083415 0.037568 -0.768367 -0.0654 -0.162675 -0.000631</acceleration>
+          <wrench>-0.083415 0.037568 -0.768367 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='centrum_4'>
+        <pose frame=''>0.400014 0.099978 0.536612 0.000591 0.001045 0.000468</pose>
+        <scale>1 1 1</scale>
+        <link name='centrum_4'>
+          <pose frame=''>0.400014 0.099978 0.536612 0.000591 0.001045 0.000468</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.078352 0.035721 -2.38737 -0.015597 -0.036502 0.002866</acceleration>
+          <wrench>-0.078352 0.035721 -2.38737 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='centrum_5'>
+        <pose frame=''>0.399985 0.299982 0.53762 0.000321 8.9e-05 0.0003</pose>
+        <scale>1 1 1</scale>
+        <link name='centrum_5'>
+          <pose frame=''>0.399985 0.299982 0.53762 0.000321 8.9e-05 0.0003</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.07672 0.036059 -0.642037 -0.024182 0.006547 0.000819</acceleration>
+          <wrench>-0.07672 0.036059 -0.642037 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='centrum_6'>
+        <pose frame=''>0.390483 -0.243495 0.517109 0.00046 0.000254 0.000183</pose>
+        <scale>1 1 1</scale>
+        <link name='centrum_6'>
+          <pose frame=''>0.390483 -0.243495 0.517109 0.00046 0.000254 0.000183</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076906 0.035117 0.402712 0.002224 0.004379 -0.000584</acceleration>
+          <wrench>-0.076906 0.035117 0.402712 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cuboid_3'>
+        <pose frame=''>0.69998 -0.100001 0.537098 2.5e-05 4.6e-05 -0.000161</pose>
+        <scale>1 1 1</scale>
+        <link name='cuboid_3'>
+          <pose frame=''>0.69998 -0.100001 0.537098 2.5e-05 4.6e-05 -0.000161</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076835 0.035087 -0.268966 0.001622 0.003525 -0.00029</acceleration>
+          <wrench>-0.076835 0.035087 -0.268966 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cuboid_4'>
+        <pose frame=''>0.700006 0.099971 0.537106 0.000731 0.000664 0.000177</pose>
+        <scale>1 1 1</scale>
+        <link name='cuboid_4'>
+          <pose frame=''>0.700006 0.099971 0.537106 0.000731 0.000664 0.000177</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076827 0.03508 0.409723 0.001879 0.003921 -0.000419</acceleration>
+          <wrench>-0.076827 0.03508 0.409723 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cylinder_50'>
+        <pose frame=''>0.985512 -0.079387 0.524642 0.002358 -0.003499 -0.000306</pose>
+        <scale>1 1 1</scale>
+        <link name='cylinder_50'>
+          <pose frame=''>0.985512 -0.079387 0.524642 0.002358 -0.003499 -0.000306</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.074972 0.039264 -8.6e-05 -0.164069 0.080304 -0.000213</acceleration>
+          <wrench>-0.074972 0.039264 -8.6e-05 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cylinder_75'>
+        <pose frame=''>0.400784 -0.091262 0.53714 0.005087 -0.004285 0.0087</pose>
+        <scale>1 1 1</scale>
+        <link name='cylinder_75'>
+          <pose frame=''>0.400784 -0.091262 0.53714 0.005087 -0.004285 0.0087</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.073284 0.034917 0.329593 0.006117 0.098386 -0.000461</acceleration>
+          <wrench>-0.073284 0.034917 0.329593 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='half_ball'>
+        <pose frame=''>0.991768 0.274579 0.499626 -0.001797 -0.001138 -0.000824</pose>
+        <scale>1 1 1</scale>
+        <link name='half_ball'>
+          <pose frame=''>0.991768 0.274579 0.499626 -0.001797 -0.001138 -0.000824</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076989 0.03504 -0.877606 0.176249 -0.052465 0.001935</acceleration>
+          <wrench>-0.076989 0.03504 -0.877606 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='kinect2'>
+        <pose frame=''>0 -0 -0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='kinect2_link'>
+          <pose frame=''>0 0 1.5 -2.61799 -0 -1.5708</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='prisms_6'>
+        <pose frame=''>0.721392 0.29324 0.537116 0.000276 0.001196 -0.001214</pose>
+        <scale>1 1 1</scale>
+        <link name='prisms_6'>
+          <pose frame=''>0.721392 0.29324 0.537116 0.000276 0.001196 -0.001214</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.079191 0.035122 0.39367 0.000528 -0.059099 -5.3e-05</acceleration>
+          <wrench>-0.079191 0.035122 0.39367 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='square_25'>
+        <pose frame=''>0.575018 0.000953 0.512111 0.000568 1.7e-05 -0.000328</pose>
+        <scale>1 1 1</scale>
+        <link name='square_25'>
+          <pose frame=''>0.575018 0.000953 0.512111 0.000568 1.7e-05 -0.000328</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076954 0.035141 -0.370495 0.000839 0.002159 -0.000429</acceleration>
+          <wrench>-0.076954 0.035141 -0.370495 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='square_50'>
+        <pose frame=''>0.989285 0.090127 0.524601 0.000644 -8e-06 -0.000173</pose>
+        <scale>1 1 1</scale>
+        <link name='square_50'>
+          <pose frame=''>0.989285 0.090127 0.524601 0.000644 -8e-06 -0.000173</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.076383 0.036041 -0.801397 -0.035392 0.025149 -0.0009</acceleration>
+          <wrench>-0.076383 0.036041 -0.801397 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='table'>
+        <pose frame=''>-0.232879 0.453693 -0.000342 1.1e-05 2.2e-05 -1e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='table'>
+          <pose frame=''>-0.232879 0.453693 -0.000342 1.1e-05 2.2e-05 -1e-06</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.038488 0.017576 0.637197 -0.070305 -0.153951 0</acceleration>
+          <wrench>-0.415675 0.189821 6.88173 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>1.61763 0.069062 2.03 0 1.03164 3.1042</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

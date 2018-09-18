@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- this launch is for j2s7s300 -->
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->  
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find kinova_gazebo)/worlds/jaco.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find kinova_description)/urdf/j2s7s300_standalone.xacro'" />
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -model j2s7s300 -param robot_description"/>
+
+  <!-- ros_control launch file -->
+  <!-- kinova_control.launch need four args. If arg use_trajectory_controller is true ,the arg is7dof will not work.-->
+  <include file="$(find kinova_control)/launch/kinova_control.launch">
+    <arg name="kinova_robotName" value="j2s7s300"/>
+    <arg name="kinova_robotType" value="j2s7s300"/>
+    <arg name="use_trajectory_controller" value="true"/>
+    <arg name="is7dof" value="false"/>
+  </include>
+
+</launch>

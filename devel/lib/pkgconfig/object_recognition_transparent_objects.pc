@@ -1,0 +1,8 @@
+prefix=/home/h/catkin_ws/devel
+
+Name: object_recognition_transparent_objects
+Description: Description of object_recognition_transparent_objects
+Version: 0.4.3
+Cflags: -I/home/h/catkin_ws/src/ork/transparent_objects/include
+Libs: -L/home/h/catkin_ws/devel/lib 
+Requires: 

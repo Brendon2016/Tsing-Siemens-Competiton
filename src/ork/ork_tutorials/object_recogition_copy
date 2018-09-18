@@ -1,0 +1,107 @@
+<launch>
+
+
+  <!-- Which image resolution: sd, qhd, hd -->
+  <arg name="resolution" default="qhd" />
+  <arg name="publish_tf" value="true" />
+
+  <arg name="camera" default="kinect2" />
+  <arg name="rgb_frame_id"   default="/$(arg camera)_rgb_optical_frame" />
+  <arg name="depth_frame_id" default="/$(arg camera)_depth_optical_frame" />
+  <arg name="rgb_camera_info_url"   default="" />
+  <arg name="depth_camera_info_url" default="" />
+  <arg name="depth_registration" default="true" />
+
+
+  <!-- start kinect2 -->
+  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+    <arg name="camera" value="$(arg camera)" />
+    <arg name="rgb_frame_id" value="$(arg rgb_frame_id)" />
+    <arg name="depth_frame_id" value="$(arg depth_frame_id)" />
+    <arg name="rgb_camera_info_url" value="$(arg rgb_camera_info_url)" />
+    <arg name="depth_camera_info_url" value="$(arg depth_camera_info_url)" />
+    <arg name="depth_registration" value="$(arg depth_registration)" />
+    <arg name="publish_tf" value="$(arg publish_tf)" />
+
+    <remap from="camera/rgb/image_raw" to="/kinect2/$(arg resolution)/image_color_rect"/>
+    <remap from="camera/depth/image_raw" to="/kinect2/$(arg resolution)/image_depth_rect"/>
+    <remap from="camera/rgb/camera_info" to="/kinect2/$(arg resolution)/camera_info"/>
+    <remap from="camera/depth/camera_info" to="/kinect2/$(arg resolution)/camera_info"/>
+  </include>
+
+<!-- Setting the ROS parameters for the Kinect2 driver  ????????????????????????????-->
+  <node name="param_set_image_mode" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver image_mode 1" />
+  <node name="param_set_depth_mode" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver depth_mode 2" />
+  <node name="param_set_image_time_offset" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver image_time_offset 0.0" />
+  <node name="param_set_depth_time_offset" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver depth_time_offset 0.0" />
+
+
+<!-- Republishing the depth and RGB image topics   -->
+<!--  <node name="relay_image_depth_rec" pkg="topic_tools" type="relay" args="/kinect2/$(arg resolution)/image_depth_rec /camera/depth/image_raw" />
+  <node name="relay_image_color_rect" pkg="topic_tools" type="relay" args="/kinect2/$(arg resolution)/image_color_rect /camera/rgb/image_raw" />
+-->
+
+<!-- Start recognition   -->
+<!-- The following command uses the tod pipeline. This will work well for textured objects.  -->
+<!--  <node name="tod_detection" pkg="object_recognition_core" type="detection" >
+     <param name="c" value="`rospack find object_recognition_tod`/conf/detection.ros.ork"/>
+     <param name="visualize" value="true" />
+  </node>
+-->
+
+  <arg name="config_file" default="$(find object_recognition_ros)/conf/detection.ros.ork"/>
+  <node pkg="object_recognition_core" ns="/object_recognition" name="tod_detection" output="screen" type="detection" args="-c $(arg config_file)"/>
+
+<!-- The following command uses the tabletop pipeline, which can detect objects placed on a flat
+     surface, such as a table itself                                                               -->
+<!--  <node name="tabletop_detection" pkg="object_recognition_core" type="detection" >
+     <param name="c" value="`rospack find object_recognition_tableto`/conf/detection.ros.ork"/>
+     <param name="visualize" value="true" />
+  </node>
+-->
+
+<!-- The following command uses the linemod pipeline, which is the best for rigid object recognition.  -->
+<!--  <node name="linemod_detection" pkg="object_recognition_core" type="detection" >
+     <param name="c" value="`rospack find object_recognition_linemod`/conf/detection.ros.ork"/>
+     <param name="visualize" value="true" />
+  </node>
+-->
+  <!-- add camera tranformation frame -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_kinect2_tf" 
+		args="0 0.0 0 0.0 0.0 0.0 /base_link /kinect2_link 100" />   
+
+
+  <!-- for robot       -->
+	<node pkg="tf" type="static_transform_publisher" name="odom_to_base_tf"  
+		args="1.0 0.0 0.1 1.5707 0.0 0.0 /odom /base_link 100" />         
+	<node pkg="tf" type="static_transform_publisher" name="map_to_odom_tf"    
+		args="0.0 0.5 0.0 0.7853 0.0 0.0 /map /odom 100" />              
+
+
+<!-- rviz display    -->
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find myrviz)/rviz/myrviz.rviz" /> 
+
+</launch>
+
+rosrun object_recognition_core training -c `rospack find object_recognition_linemod`/conf/training.ork
+rosrun object_recognition_core detection -c `rospack find object_recognition_linemod`/conf/kinect2.ork
+
+
+rosrun object_recognition_core object_add.py -n "ball" -d "A universal ball" --commit
+
+rosrun object_recognition_core mesh_add.py 1c8233069f30369937d0240ba0013628 square_50.stl --commit
+rosrun object_recognition_core mesh_add.py 1c8233069f30369937d0240ba00035aa `rospack find ork_tutorials`/data/coke.obj --commit
+
+rosrun object_recognition_core push.sh
+
+http://localhost:5984/or_web_ui/_design/viewer/index.html
+http://localhost:5984/_utils/database.html?object_recognition/_design/objects/_view/by_object_name
+
+rosrun object_recognition_core training -c `rospack find object_recognition_ros`/conf/linemod_training.ork
+
+rosrun object_recognition_core training -c `rospack find object_recognition_ros`/conf/tod_training.ork
+
+rosrun object_recognition_core object_delete.py 573fc684f92022556777885468004bed --commit
+
+

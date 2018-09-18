@@ -1,0 +1,38 @@
+<launch>
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="kinect2_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/kinect2.urdf.xacro'" />
+
+<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="kinect2_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.25 -y -0.7 -z 0.8 -model kinect2 -param kinect2_description"/>
+
+ <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="table2_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/table2.xacro'" />
+  <param name="table_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/table.xacro'" />
+  <param name="ball_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/ball.xacro'" />
+  <param name="centrum_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/centrum.xacro'" />
+  <param name="centrum_4_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/centrum_4.xacro'" />
+  <param name="centrum_5_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/centrum_5.xacro'" />
+  <param name="centrum_6_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/centrum_6.xacro'" />
+  <param name="cuboid_3_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/cuboid_3.xacro'" />
+  <param name="cuboid_4_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/cuboid_4.xacro'" />
+  <param name="cylinder_75_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/cylinder_75.xacro'" />
+  <param name="prisms_6_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/prisms_6.xacro'" />
+  <param name="square_50_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/square_50.xacro'" />
+
+<param name="basket_description" command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/basket.xacro'" />
+<node name="basket_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.15 -y 0.1 -z 0 -model basket -param basket_description"/>
+
+<!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <node name="table2_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.15 -y 0.1 -z 0 -model table2 -param table2_description"/>
+  <node name="table_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.15 -y -0.35 -z 0 -model table -param table_description"/>
+  <node name="ball_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.229 -y -0.223 -z 0.1 -model ball -param ball_description"/>
+  <node name="centrum_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.31 -y -0.306 -z 0.1 -model centrum -param centrum_description"/>
+  <node name="centrum_4_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.15 -y -0.45 -z 0.1 -model centrum_4 -param centrum_4_description"/>
+  <node name="centrum_5_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.30 -y -0.45 -z 0.1 -model centrum_5 -param centrum_5_description"/>
+  <node name="centrum_6_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0 -y -0.456 -z 0.1 -model centrum_6 -param centrum_6_description"/>
+  <node name="cuboid_3_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.15 -y -0.3 -z 0.1 -model cuboid_3 -param cuboid_3_description"/>
+  <node name="cuboid_4_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0 -y -0.317 -z 0.1 -model cuboid_4 -param cuboid_4_description"/>
+  <node name="cylinder_75_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.08 -y -0.38 -z 0.1 -model cylinder_75 -param cylinder_75_description"/>
+  <node name="prisms_6_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.073 -y -0.229 -z 0.1 -model prisms_6 -param prisms_6_description"/>
+  <node name="square_50_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.22 -y -0.37 -z 0.1 -model square_50 -param square_50_description"/>
+</launch>

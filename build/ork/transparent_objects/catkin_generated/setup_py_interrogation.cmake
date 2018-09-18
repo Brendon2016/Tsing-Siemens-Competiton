@@ -1,0 +1,6 @@
+set(object_recognition_transparent_objects_SETUP_PY_VERSION "0.4.3")
+set(object_recognition_transparent_objects_SETUP_PY_SCRIPTS "")
+set(object_recognition_transparent_objects_SETUP_PY_PACKAGES "object_recognition_transparent_objects")
+set(object_recognition_transparent_objects_SETUP_PY_PACKAGE_DIRS "python/object_recognition_transparent_objects")
+set(object_recognition_transparent_objects_SETUP_PY_MODULES "")
+set(object_recognition_transparent_objects_SETUP_PY_MODULE_DIRS "")

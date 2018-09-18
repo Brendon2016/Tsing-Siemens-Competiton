@@ -1,0 +1,8 @@
+prefix=/home/h/catkin_ws/install
+
+Name: myrviz
+Description: Description of myrviz
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/h/catkin_ws/install/lib 
+Requires: 

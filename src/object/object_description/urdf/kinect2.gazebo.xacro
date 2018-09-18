@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot>
+
+  <!-- kinect2 link -->
+  <gazebo reference="kinect2_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+  <gazebo reference="kinect2_ir_link">
+    <sensor type="depth" name="kinect2_ir_sensor">
+      <always_on>true</always_on>
+      <update_rate>30</update_rate>
+      <camera>
+        <horizontal_fov>${70.0*M_PI/180.0}</horizontal_fov>
+        <image>
+          <format>B8G8R8</format>
+          <width>960</width>
+          <height>540</height>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>12</far>
+        </clip>
+      </camera>
+      <plugin name="kinect2_ir_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30</updateRate>
+        <cameraName>kinect2_ir</cameraName>
+        <imageTopicName>/kinect2/qhd/image_color_rect</imageTopicName>
+        <cameraInfoTopicName>/kinect2/qhd/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>/kinect2/qhd/image_depth_rect</depthImageTopicName>
+        <depthImageCameraInfoTopicName>/kinect2/qhd/camera_info</depthImageCameraInfoTopicName>
+        <pointCloudTopicName>/kinect2/qhd/points</pointCloudTopicName>
+        <frameName>kinect2_ir_optical_frame</frameName>
+        <pointCloudCutoff>0.5</pointCloudCutoff>
+        <distortionK1>0</distortionK1>
+        <distortionK2>0</distortionK2>
+        <distortionK3>0</distortionK3>
+        <distortionT1>0</distortionT1>
+        <distortionT2>0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+    <material value="Gazebo/Red" />
+  </gazebo>
+
+</robot>
+

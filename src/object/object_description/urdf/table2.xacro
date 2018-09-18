@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- Revolute-Revolute Manipulator -->
+<robot name="table2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Constants for robot dimensions -->
+  <xacro:property name="M_PI" value="3.1415926535897931"/>
+  <xacro:property name="mass" value="0.9" /> <!-- arbitrary value for mass -->
+  <xacro:property name="length" value="1" /> 
+  <xacro:property name="width" value="1" /> 
+  <xacro:property name="height" value="0.001" /> 
+
+  <xacro:include filename="$(find object_description)/urdf/materials.xacro" />
+
+  <link name="world"/>
+
+  <joint name="world_table2" type="fixed">
+    <parent link="world"/>
+    <child link="table2"/>
+  </joint>
+
+
+  <!-- table2 -->
+  <link name="table2">
+
+    <visual>
+      <origin xyz="0 0 ${height/2}" rpy="0 0 0"/>
+      <geometry>
+	<box size="${length} ${width+0.3} ${height}"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 ${height/2}" rpy="0 0 0"/>
+      <geometry>
+	<box size="${length} ${width} ${height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 ${height/2}" rpy="0 0 0"/>
+      <mass value="${mass}"/>
+      <inertia
+	  ixx="${mass / 12.0 * (width*width + height*height)}" ixy="0.0" ixz="0.0"
+	  iyy="${mass / 12.0 * (height*height + length*length)}" iyz="0.0"
+	  izz="${mass / 12.0 * (length*length + width*width)}"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="table2">  
+    <material>Gazebo/Grey</material>  
+	<mu1>10000</mu1>  
+    <mu2>5000</mu2>  
+    <kp>10000.0</kp>   
+    <kd>1.0</kd>  
+  </gazebo> 
+
+
+</robot>

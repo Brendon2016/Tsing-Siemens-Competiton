@@ -1,0 +1,8 @@
+prefix=/home/h/catkin_ws/devel
+
+Name: object_recognition_capture
+Description: Description of object_recognition_capture
+Version: 0.3.2
+Cflags: 
+Libs: -L/home/h/catkin_ws/devel/lib 
+Requires: 

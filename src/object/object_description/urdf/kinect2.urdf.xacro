@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<robot name="kinect2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+  <xacro:property name="M_PI" value="3.1415926535897931"/>
+  <xacro:property name="ir_depth_rgb_offset_y" value="0.01"/> <!-- FIXME: what is this offset? -->
+
+  <xacro:include filename="$(find object_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find object_description)/urdf/kinect2.gazebo.xacro" />
+
+
+  <link name="world"/>
+
+  <joint name="kinect2_link" type="fixed">
+    <parent link="world"/>
+    <child link="kinect2_link"/>
+    <origin xyz="0 0 0" rpy="${-M_PI*6/7} 0 0"/>
+  </joint>
+
+  <!-- Kinect2 base link-->
+    <link name="kinect2_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://object_description/meshes/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="orange" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+ <!--         <sphere radius="0.0005"/>    -->
+          <mesh filename="package://object_description/meshes/kinect2_origin_on_rgb_optical_frame.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+ <!--     <inertial>
+        <mass value="0.1"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
+                 iyy="0.01"  iyz="0.0"
+                 izz="0.01" />
+      </inertial>
+-->
+    </link>
+
+    <!-- kinect2 ir sensor physical attachment -->
+    <joint name="kinect2_ir_joint" type="fixed">
+<!--      <origin xyz="-0.032267 -0.0475 0.155"  -->
+      <origin xyz="0 0 0"
+              rpy="0 ${-M_PI/2} ${-M_PI/2}"/>
+      <parent link="kinect2_link"/>
+      <child link="kinect2_ir_link"/>
+    </joint>
+
+    <link name="kinect2_ir_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.0005"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.0005"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
+                 iyy="0.01"  iyz="0.0"
+                 izz="0.01" />
+      </inertial>
+    </link>
+
+    <!-- kinect2 ir sensor frame -->
+    <joint name="kinect2_ir_optical_frame_joint" type="fixed">
+<!--      <origin xyz="0 ${ir_depth_rgb_offset_y} 0" -->
+      <origin xyz="0 0 0"
+              rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="kinect2_ir_link"/>
+      <child link="kinect2_ir_optical_frame"/>
+    </joint>
+
+    <link name="kinect2_ir_optical_frame"/>
+
+    <!-- kinect2 rgb sensor physical attachment -->
+    <joint name="kinect2_rgb_joint" type="fixed">
+<!--      <origin xyz="0 -0.05175 0" rpy="0 0 0"/>  -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="kinect2_link"/>
+      <child link="kinect2_rgb_link"/>
+    </joint>
+
+    <link name="kinect2_rgb_link" >
+      <inertial>
+        <mass value="0.1" />
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="0.01"  ixy="0.0"  ixz="0.0"
+                 iyy="0.01"  iyz="0.0"
+                 izz="0.01" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0"
+                rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+        <geometry>
+          <sphere radius="0.0005"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.0005"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- kinect2 rgb sensor frame -->
+    <joint name="kinect2_rgb_optical_frame_joint" type="fixed">
+      <origin xyz="0 0 0"
+              rpy="${-M_PI/2} 0 ${-M_PI/2}" />
+      <parent link="kinect2_rgb_link"/>
+      <child link="kinect2_rgb_optical_frame"/>
+    </joint>
+
+    <link name="kinect2_rgb_optical_frame"/>
+   
+</robot>

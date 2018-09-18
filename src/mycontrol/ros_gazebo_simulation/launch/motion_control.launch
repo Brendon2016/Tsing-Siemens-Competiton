@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+	<!--Moveit output to gazebo procedure is in the file moveit_output_to_gazebo.md; or look at this book 
+	mastering ROS for robotics programming.-->
+	<!-- load launch file, start the kinova in gazebo -->
+	<include file="$(find ros_gazebo_simulation)/launch/kinova_gazebo.launch"/>
+
+	<!-- load move_group move_rviz-->
+	<include file="$(find j2s7s300_moveit_config)/launch/j2s7s300_gazebo_demo.launch"/>
+	<include file="$(find object_gazebo)/launch/object_gazebo.launch"/>
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/h/catkin_ws/install
+
+Name: ros_gazebo_simulation
+Description: Description of ros_gazebo_simulation
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/h/catkin_ws/install/lib 
+Requires: 

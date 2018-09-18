@@ -1,0 +1,11 @@
+<launch>
+  <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find object_description)/urdf/kinect2.urdf.xacro'" />
+
+<!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>   
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find object_description)/launch/object.rviz"/>
+
+</launch>

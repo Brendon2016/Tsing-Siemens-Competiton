@@ -1,0 +1,60 @@
+<launch>
+
+  <!-- Which image resolution: sd, qhd, hd -->
+  <arg name="resolution" default="qhd" />
+  <arg name="publish_tf" value="true" />
+
+  <!-- start kinect2 -->
+  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+    <arg name="publish_tf" value="$(arg publish_tf)" />
+
+    <remap from="camera/rgb/image_raw" to="/kinect2/$(arg resolution)/image_color_rect"/>
+    <remap from="camera/depth/image_raw" to="/kinect2/$(arg resolution)/image_depth_rect"/>
+    <remap from="camera/rgb/camera_info" to="/kinect2/$(arg resolution)/camera_info"/>
+    <remap from="camera/depth/camera_info" to="/kinect2/$(arg resolution)/camera_info"/>
+  </include>
+
+<!-- Setting the ROS parameters for the Kinect2 driver  ????????????????????????????-->
+  <node name="param_set_image_mode" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver image_mode 1" />
+  <node name="param_set_depth_mode" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver depth_mode 2" />
+  <node name="param_set_image_time_offset" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver image_time_offset 0.0" />
+  <node name="param_set_depth_time_offset" pkg="dynamic_reconfigure" type="dynparam" args="set /camera/driver depth_time_offset 0.0" />
+
+
+<!-- Start recognition   -->
+<!-- The following command uses the tod pipeline. This will work well for textured objects.  -->
+<!--
+  <arg name="config_file" default="$(find object_recognition_ros)/conf/tod_detection.ros.ork"/>
+  <node pkg="object_recognition_core" ns="/object_recognition" name="tod_detection" output="screen" type="detection" args="-c $(arg config_file)"/>
+-->
+
+<!-- The following command uses the tabletop pipeline, which can detect objects placed on a flat
+     surface, such as a table itself  -->
+<!-- 
+  <arg name="config_file" default="$(find object_recognition_ros)/conf/tabletop_detection.object.ros.ork"/>
+  <node pkg="object_recognition_core" ns="/object_recognition" name="tabletop_detection" output="screen" type="detection" args="-c $(arg config_file)"/>  
+-->
+
+
+<!-- The following command uses the linemod pipeline, which is the best for rigid object recognition.  -->
+
+  <arg name="config_file" default="$(find object_recognition_ros)/conf/linemod_detection.ros.ork"/>
+  <node pkg="object_recognition_core" ns="/object_recognition" name="linemod_detection" output="screen" type="detection" args="-c $(arg config_file)"/>  
+
+
+
+  <!-- add camera tranformation frame -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_kinect2_tf" 
+		args="0 0.0 0 0.0 0.0 0.0 /base_link /kinect2_link 100" />   
+
+  <!-- for robot       -->
+	<node pkg="tf" type="static_transform_publisher" name="odom_to_base_tf"  
+		args="1.0 0.0 0.1 1.5707 0.0 0.0 /odom /base_link 100" />         
+	<node pkg="tf" type="static_transform_publisher" name="map_to_odom_tf"    
+		args="0.0 0.5 0.0 0.7853 0.0 0.0 /map /odom 100" />              
+
+
+<!-- rviz display    -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find myrviz)/rviz/myrviz.rviz" /> 
+
+</launch>
